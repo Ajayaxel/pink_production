@@ -198,10 +198,50 @@ const CoSetsPage = () => {
     setSelectedRatings([]);
   };
 
+  // FIXED: Improved image URL building with better error handling
   const buildImageUrl = (imgPath) => {
-    if (!imgPath || imgPath.length === 0) return '/placeholder-image.jpg';
+    if (!imgPath || imgPath.length === 0) {
+      return '/placeholder-image.jpg';
+    }
+
+    // If it's already a full URL, return as is
+    if (imgPath.startsWith('http://') || imgPath.startsWith('https://')) {
+      return imgPath;
+    }
+
+    // Remove leading slash if present and build full URL
     const cleanedPath = imgPath.startsWith('/') ? imgPath.slice(1) : imgPath;
-    return `https://backend.pinkstories.ae/${cleanedPath}`;
+    
+    // Ensure the path doesn't have double slashes
+    const finalUrl = `https://backend.pinkstories.ae/${cleanedPath}`.replace(/([^:]\/)\/+/g, "$1");
+    
+    console.log('Image path debug:', {
+      original: imgPath,
+      cleaned: cleanedPath,
+      final: finalUrl
+    });
+    
+    return finalUrl;
+  };
+
+  // ADDED: Image error handler
+  const handleImageError = (e, item) => {
+    console.error('Image failed to load:', e.target.src);
+    console.log('Product item:', item);
+    
+    // Try alternative image sources
+    if (item.images && item.images.length > 1) {
+      // Try next image in array
+      const currentSrc = e.target.src;
+      const currentIndex = item.images.findIndex(img => buildImageUrl(img) === currentSrc);
+      if (currentIndex < item.images.length - 1) {
+        e.target.src = buildImageUrl(item.images[currentIndex + 1]);
+        return;
+      }
+    }
+    
+    // Fallback to placeholder
+    e.target.src = '/placeholder-image.jpg';
   };
 
   // Mock function to generate random ratings and reviews (you can replace with actual API data)
@@ -247,8 +287,6 @@ const CoSetsPage = () => {
             <FiX className="md:hidden cursor-pointer text-xl" onClick={() => setIsFilterOpen(false)} />
           </div>
         </div>
-
-       
 
         <div className="mb-6">
           <h4 className="font-semibold mb-2">Price</h4>
@@ -429,7 +467,6 @@ const CoSetsPage = () => {
       <div className="flex-1 p-6 relative">
         <div className="flex justify-between items-center mb-6">
           <div>
-          
             <p className="text-sm text-gray-600">
               {hasActiveFilters() 
                 ? `${filteredProducts.length} products found` 
@@ -478,6 +515,8 @@ const CoSetsPage = () => {
                       src={item.images?.length ? buildImageUrl(item.images[0]) : '/placeholder-image.jpg'}
                       alt={item.productName}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => handleImageError(e, item)}
+                      loading="lazy"
                     />
                     
                     {/* Rating Badge */}
