@@ -31,6 +31,9 @@ const CoSetsPage = () => {
       try {
         const res = await axios.get("https://backend.pinkstories.ae/api/products", {
           withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         const allProducts = res.data?.data || [];
         const coSetsProducts = allProducts.filter(p => p.category?.toLowerCase() === 'co-ord sets');
