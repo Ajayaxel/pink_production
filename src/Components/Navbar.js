@@ -19,11 +19,7 @@ const Navbar = () => {
                 <Link to="/party-wears/girls" className="text-black block hover:text-[#c49a6c]">Girls</Link>
                 <Link to="/party-wears/matching" className="text-black block hover:text-[#c49a6c]">Matching Sets</Link>
               </div>
-              <div className="space-y-2">
-                <Link to="/party-wears/mommy-me" className="text-black block hover:text-[#c49a6c]">Mommy & Me</Link>
-                <Link to="/party-wears/family-sets" className="text-black block hover:text-[#c49a6c]">Family Sets</Link>
-                <Link to="/party-wears/all" className="text-black block hover:text-[#c49a6c]">View All</Link>
-              </div>
+             
             </div>
           </div>
         </div>

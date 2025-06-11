@@ -425,7 +425,7 @@ const PartyWearsPage = () => {
       <div className="flex-1 p-6 relative">
         <div className="flex justify-between items-center mb-6">
           <div>
-            <h2 className="text-2xl font-bold">Kurtha Collection</h2>
+            
             <p className="text-sm text-gray-600">
               {hasActiveFilters() 
                 ? `${filteredProducts.length} products found` 

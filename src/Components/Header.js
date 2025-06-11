@@ -38,15 +38,8 @@ const Header = ({ cart, setIsCartOpen }) => {
               </div>
               <div className="flex-1 grid grid-cols-2 p-4 gap-x-6 text-sm text-black">
                 <div className="space-y-2">
-                  <Link to="/Rectangle 11.png" className="text-black block hover:text-[#c49a6c] font-medium">
-                    Eid Collection 2025 <span className="text-pink-400 font-bold text-xs ml-1">New</span>
-                  </Link>
-                  <Link to="/shop/girls" className="text-black block hover:text-[#c49a6c]">Girls</Link>
-                  <Link to="/shop/baba" className="text-black block hover:text-[#c49a6c]">Baba & Me</Link>
-                </div>
-                <div className="space-y-2">
-                  <Link to="/shop/boys" className="text-black block hover:text-[#c49a6c]">Boys</Link>
-                  <Link to="/shop/mommy" className="text-black block hover:text-[#c49a6c]">Mommy & Me</Link>
+                  <Link to="/kurta" className="text-black block hover:text-[#c49a6c]">Kurta</Link>
+                  <Link to="/saree" className="text-black block hover:text-[#c49a6c]">Saree</Link>
                   <Link to="/shop/all" className="text-black block hover:text-[#c49a6c]">View All</Link>
                 </div>
               </div>

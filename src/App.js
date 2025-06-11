@@ -23,6 +23,9 @@ import PartyWearsPage from "./Components/PartyWearsPage";
 import SemipartyWearPage from "./Components/SemipartyWearPage";
 import CoSetsPage from "./Components/CoSetsPage";
 import IndoOutfits from "./Components/IndoOutfits";
+import KurtaPage from "./Components/KurtaPage";
+import SarrePage from "./Components/SarrePage";
+
 
 
 
@@ -94,6 +97,8 @@ function App() {
         <Route path="/semi-party-wears" element={<SemipartyWearPage />} />
          <Route path="/co-ord-sets" element={<CoSetsPage />} />
          <Route path="/indo-western-outfits" element={<IndoOutfits/>} />
+         <Route path="/kurta" element={<KurtaPage/>} />
+         <Route path="/saree" element={<SarrePage/>} />
 
 
 

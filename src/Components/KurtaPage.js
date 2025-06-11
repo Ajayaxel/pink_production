@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { FiBookmark, FiX, FiChevronDown, FiFilter, FiStar } from "react-icons/fi";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const CoSetsPage = () => {
+const KurtaPage = () => {
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
@@ -33,9 +32,9 @@ const CoSetsPage = () => {
       try {
         const res = await axios.get("https://backend.pinkstories.ae/api/products");
         const allProducts = res.data?.data || [];
-        const coSets = allProducts.filter(p => p.category?.toLowerCase() === 'co-ord sets');
-        setProducts(coSets);
-        setFilteredProducts(coSets);
+        const kurtaProducts = allProducts.filter(p => p.category?.toLowerCase() === 'kurta');
+        setProducts(kurtaProducts);
+        setFilteredProducts(kurtaProducts);
       } catch (err) {
         console.error("Failed to fetch products", err);
       }
@@ -426,7 +425,7 @@ const CoSetsPage = () => {
       <div className="flex-1 p-6 relative">
         <div className="flex justify-between items-center mb-6">
           <div>
-            
+            <h2 className="text-2xl font-bold">Kurtha Collection</h2>
             <p className="text-sm text-gray-600">
               {hasActiveFilters() 
                 ? `${filteredProducts.length} products found` 
@@ -531,4 +530,4 @@ const CoSetsPage = () => {
   );
 };
 
-export default CoSetsPage;
+export default KurtaPage;
