@@ -99,18 +99,12 @@ function App() {
          <Route path="/indo-western-outfits" element={<IndoOutfits/>} />
          <Route path="/kurta" element={<KurtaPage/>} />
          <Route path="/saree" element={<SarrePage/>} />
+         <Route path="/cart" element={<CartDrawer />} />
 
 
 
       </Routes>
 
-      <CartDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cart={cart}
-        setCart={setCart}
-        handleChange={handleChange}
-      />
     </>
   );
 }

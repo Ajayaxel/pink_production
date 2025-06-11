@@ -82,8 +82,11 @@ const Header = ({ cart, setIsCartOpen }) => {
           <FiSearch className="cursor-pointer" />
           <FiBookmark className="cursor-pointer" />
           <h2 className="cursor-pointer text-sm font-medium">ACCOUNT</h2>
-          <h3 onClick={() => setIsCartOpen(true)} className="cursor-pointer text-sm font-medium">
-            CART ({cart.length})
+          <h3
+            onClick={() => navigate('/cart')}
+            className="cursor-pointer text-sm font-medium"
+          >
+            CART
           </h3>
 
           {/* Authenticated Profile Avatar or Login */}
@@ -125,8 +128,11 @@ const Header = ({ cart, setIsCartOpen }) => {
           </nav>
           <div className="pt-2">
             <h2 onClick={() => setIsMenuOpen(false)} className="cursor-pointer text-sm font-medium">ACCOUNT</h2>
-            <h3 onClick={() => { setIsCartOpen(true); setIsMenuOpen(false); }} className="cursor-pointer text-sm pt-1 font-medium">
-              CART ({cart.length})
+            <h3
+              onClick={() => navigate('/cart')}
+              className="cursor-pointer text-sm font-medium"
+            >
+              CART
             </h3>
 
             {isAuthenticated ? (
