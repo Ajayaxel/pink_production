@@ -213,7 +213,7 @@ const CoSetsPage = () => {
     const cleanedPath = imgPath.startsWith('/') ? imgPath.slice(1) : imgPath;
     
     // Ensure the path doesn't have double slashes
-    const finalUrl = `https://backend.pinkstories.ae/${cleanedPath}`.replace(/([^:]\/)\/+/g, "$1");
+    const finalUrl = `https://backend.pinkstories.ae${cleanedPath}`.replace(/([^:]\/)\/+/g, "$1");
     
     console.log('Image path debug:', {
       original: imgPath,

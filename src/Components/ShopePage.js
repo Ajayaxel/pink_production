@@ -17,9 +17,9 @@ const ShopPage = ({ heading = "Shop" }) => {
   
   const buildImageUrl = (imgPath) => {
     if (!imgPath || imgPath.length === 0) return '/placeholder-image.jpg';
-    const cleanedPath = imgPath.startsWith('/') ? imgPath.slice(1) : imgPath;
-    return `https://backend.pinkstories.ae/${cleanedPath}`;
+    return `https://backend.pinkstories.ae/${imgPath.replace(/^\/+/, '')}`;
   };
+  ;
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -65,7 +65,7 @@ const ShopPage = ({ heading = "Shop" }) => {
   const getImageUrl = (path) => {
     if (!path) return "/fallback-image.png";
     const relativePath = path.split("/uploads/")[1];
-    return `http://localhost:7000/uploads/${relativePath}`;
+    return `https://backend.pinkstories.ae/api/uploads/${relativePath}`;
   };
 
   const categories = [...new Set(products.map((p) => p.category).filter(Boolean))];

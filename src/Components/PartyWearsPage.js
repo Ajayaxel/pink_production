@@ -32,9 +32,9 @@ const PartyWearsPage = () => {
       try {
         const res = await axios.get("https://backend.pinkstories.ae/api/products");
         const allProducts = res.data?.data || [];
-        const kurthaProducts = allProducts.filter(p => p.category?.toLowerCase() === 'kurtha');
-        setProducts(kurthaProducts);
-        setFilteredProducts(kurthaProducts);
+        const partywears = allProducts.filter(p => p.category?.toLowerCase() === 'party wears');
+        setProducts(partywears);
+        setFilteredProducts(partywears);
       } catch (err) {
         console.error("Failed to fetch products", err);
       }
